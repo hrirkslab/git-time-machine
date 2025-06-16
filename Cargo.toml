@@ -1,9 +1,16 @@
 [package]
 name = "git-time-machine"
 version = "0.1.0"
-edition = "2024"
+edition = "2021"
 description = "An MCP server that provides Git history insights to AI assistants"
-authors = ["Git Time Machine Developers"]
+authors = ["Hrirkslab <hrirkslab@gmail.com>"]
+license = "MIT"
+repository = "https://github.com/hrirkslab/git-time-machine"
+homepage = "https://github.com/hrirkslab/git-time-machine"
+documentation = "https://github.com/hrirkslab/git-time-machine/blob/main/README.md"
+keywords = ["git", "mcp", "ai", "copilot", "history"]
+categories = ["development-tools", "command-line-utilities"]
+readme = "README.md"
 
 [dependencies]
 # Web framework

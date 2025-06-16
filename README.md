@@ -25,16 +25,25 @@ A Rust-based MCP (Model Context Protocol) server that provides git history insig
 
 ## Installation
 
-### Prerequisites
+### Option 1: Install from Crates.io (Recommended)
+
+```bash
+cargo install git-time-machine
+git-time-machine
+```
+
+### Option 2: Install from Source
+
+#### Prerequisites
 
 - Rust (latest stable version)
 - Git
 
-### Setup
+#### Setup
 
 ```bash
 # Clone the repository
-git clone https://github.com/yourusername/git-time-machine.git
+git clone https://github.com/hrirkslab/git-time-machine.git
 cd git-time-machine
 
 # Build the project
@@ -42,6 +51,16 @@ cargo build --release
 
 # Run the server
 cargo run --release
+```
+
+### Option 3: Using Docker
+
+```bash
+# Build Docker image
+docker build -t git-time-machine .
+
+# Run container
+docker run -p 3000:3000 -v $(pwd):/workspace git-time-machine
 ```
 
 The server will start on `http://localhost:3000`.
