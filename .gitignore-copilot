@@ -1,0 +1,3 @@
+# Ensure .copilot directory is included in the repository
+!.copilot/
+!.copilot/*

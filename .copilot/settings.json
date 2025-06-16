@@ -1,0 +1,9 @@
+{
+  "tool_providers": [
+    {
+      "name": "git-time-machine",
+      "url": "http://localhost:3000",
+      "enabled": true
+    }
+  ]
+}

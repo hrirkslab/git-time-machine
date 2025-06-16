@@ -1,0 +1,48 @@
+{
+  "project": {
+    "name": "Git Time Machine",
+    "description": "An MCP server that provides Git history insights to AI assistants",
+    "capabilities": [
+      "git_blame_analysis",
+      "commit_diff_viewing",
+      "file_history_exploration",
+      "diff_summarization"
+    ]
+  },
+  "mcp_server": {
+    "base_url": "http://localhost:3000",
+    "endpoints": {
+      "metadata": "/metadata",
+      "tools": "/tools",
+      "plugin_manifest": "/.well-known/ai-plugin.json",
+      "openapi_schema": "/openapi.json"
+    },
+    "tools": [
+      {
+        "name": "get_git_blame",
+        "description": "Returns line-by-line blame metadata for any file",
+        "parameters": ["file"]
+      },
+      {
+        "name": "get_commit_diff",
+        "description": "Shows full diff with metadata for a specific commit",
+        "parameters": ["sha"]
+      },
+      {
+        "name": "summarize_diff",
+        "description": "Compares two commits and summarizes the changes",
+        "parameters": ["base", "head"]
+      },
+      {
+        "name": "get_commits_affecting",
+        "description": "Lists commits that modified the given file",
+        "parameters": ["file", "limit"]
+      },
+      {
+        "name": "get_file_at_commit",
+        "description": "Returns file contents as they existed at the given commit",
+        "parameters": ["file", "sha"]
+      }
+    ]
+  }
+}

@@ -72,6 +72,44 @@ curl -X POST -H "Content-Type: application/json" \
   http://localhost:3000/tools/get_git_blame
 ```
 
+## GitHub Copilot Integration
+
+Git Time Machine comes with built-in support for GitHub Copilot through the `.copilot` configuration directory. This allows Copilot to use the Git Time Machine as a tool provider for answering questions about your code's history.
+
+### Setup
+
+1. Make sure the Git Time Machine server is running:
+   ```bash
+   cargo run --release
+   ```
+
+2. The `.copilot/settings.json` file registers the server as a tool provider for GitHub Copilot:
+   ```json
+   {
+     "tool_providers": [
+       {
+         "name": "git-time-machine",
+         "url": "http://localhost:3000",
+         "enabled": true
+       }
+     ]
+   }
+   ```
+
+3. If you're using GitHub Copilot CLI or Copilot Workspace, it will automatically detect the tool provider configuration.
+
+### Usage with Copilot
+
+Once configured, you can ask Copilot questions about your code's history, such as:
+
+- "Who last modified the authentication function?"
+- "When was this bug introduced?"
+- "How has this file evolved over the past month?"
+- "What were the major changes in commit abc123?"
+- "Show me what this file looked like before the refactoring"
+
+Copilot will use the Git Time Machine tools to provide insightful answers based on your repository's history.
+
 ## Development
 
 ### Project Structure
