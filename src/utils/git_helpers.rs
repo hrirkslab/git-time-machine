@@ -306,7 +306,7 @@ fn process_diff(diff: &git2::Diff) -> Result<Vec<FileChangeInfo>, GitError> {
     )?;
     
     // Now update all the changes with the collected diff content
-    for (path, (idx, diff_content)) in file_diffs {
+    for (_path, (idx, diff_content)) in file_diffs {
         if let Some(change) = changes.get_mut(idx) {
             change.diff = Some(diff_content);
         }
@@ -376,8 +376,6 @@ pub fn get_commits_affecting_file(
     
     let limit = limit.unwrap_or(50); // Default limit to avoid excessive results
     let mut result = Vec::new();
-    // The path variable is used in the diff_opts.pathspec call below
-    let _path = Path::new(file_path);
     
     // Find commits that modified this file
     for oid in revwalk {
