@@ -1,0 +1,16 @@
+{
+    "chat.mcp.serverSampling": {
+        "git-time-machine/.vscode/mcp.json: 1": {
+            "allowedModels": [
+                "github.copilot-chat/claude-3.7-sonnet"
+            ]
+        }
+    },
+    "tool_providers": [
+        {
+            "name": "git-time-machine",
+            "url": "http://localhost:3000",
+            "enabled": true
+        }
+    ]
+}

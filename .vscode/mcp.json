@@ -1,0 +1,84 @@
+{
+  "name": "git-time-machine",
+  "version": "1.0.0",
+  "description": "Git repository history analysis tool",
+  "servers": [
+    {
+      "id": "dev-server",
+      "name": "Development Server",
+      "description": "Local development instance of Git Time Machine",
+      "host": "localhost",
+      "port": 9000,
+      "type": "development",
+      "command": "/usr/bin/cargo run",
+      "workingDirectory": "${workspaceFolder}",
+      "environment": {
+        "RUST_LOG": "debug",
+        "PATH": "${env:PATH}"
+      }
+    },
+    {
+      "id": "prod-server",
+      "name": "Production Server",
+      "description": "Production instance of Git Time Machine",
+      "host": "localhost",
+      "port": 8000,
+      "type": "production",
+      "command": "/usr/bin/cargo run --release",
+      "workingDirectory": "${workspaceFolder}",
+      "environment": {
+        "RUST_LOG": "info",
+        "PATH": "${env:PATH}"
+      }
+    }
+  ],
+  "endpoints": [
+    {
+      "path": "/api/commits",
+      "description": "Get repository commit history",
+      "method": "GET",
+      "handler": "handlers::commits"
+    },
+    {
+      "path": "/api/blame",
+      "description": "Get blame information for files",
+      "method": "GET",
+      "handler": "handlers::blame"
+    },
+    {
+      "path": "/api/diff",
+      "description": "Get diff between commits",
+      "method": "GET",
+      "handler": "handlers::diff"
+    },
+    {
+      "path": "/api/metadata",
+      "description": "Get repository metadata",
+      "method": "GET",
+      "handler": "handlers::metadata"
+    }
+  ],
+  "watch": {
+    "enabled": true,
+    "paths": [
+      "src/**/*.rs"
+    ],
+    "exclude": [
+      "target/**/*"
+    ]
+  },
+  "security": {
+    "cors": {
+      "enabled": true,
+      "allowedOrigins": ["*"]
+    },
+    "authentication": {
+      "enabled": false
+    }
+  },
+  "documentation": {
+    "enabled": true,
+    "path": "/docs",
+    "title": "Git Time Machine API"
+  }
+}
